@@ -8,7 +8,7 @@ tracking = function(){
       
       start: function(){
         _gaq = [];
-        _gaq.push(['_setAccount', tracking.googleID]);
+        _gaq.push(['_setAccount', tracking.google]);
         timer = (new Date()).getTime();
         this.pageview();
       },
@@ -58,9 +58,9 @@ tracking = function(){
       end: function(){
         timer = (new Date()).getTime() - timer;
         this.event({
-          category: 'Timer', 
-          action:   '_pageload', 
-          value:    timer
+          category  : 'Timer', 
+          action    : '_pageload', 
+          value     : timer
         });
         var script = document.createElement('script');
         script.async = true;
@@ -74,10 +74,13 @@ tracking = function(){
   
   return {
     
-    error: false,
-    googleID: 'UA-XXXXX-X',
+    error   : false,
+    google  : 'UA-XXXXX-X',
     
-    start: function(){
+    start: function(options){
+      options.error ? this.error = options.error : '';
+      options.google ? this.google = options.google : '';
+      
       google.start();
     },
     
@@ -94,31 +97,7 @@ tracking = function(){
     },
     
     end: function(){
-      this.bindEvents();
       google.end();
-    },
-    
-    bindEvents: function(){
-      $('a').each(function(){
-        var $self = $(this);
-        $self.bind('click.tracking', function(){
-          tracking.event({
-            category: 'Link', 
-            action:   $self.attr('href'), 
-            label:    $self.text()
-          });
-        });
-      });
-      $('button').each(function(){
-        var $self = $(this);
-        $self.bind('click.tracking', function(){
-          tracking.event({
-            category: 'Form', 
-            action:   $self.parents('form').href('action'), 
-            label:    $self.text()
-          });
-        });
-      });
     }
     
   }
