@@ -59,14 +59,13 @@ tracking = function(){
         timer = (new Date()).getTime() - timer;
         this.event({
           category: 'Timer', 
-          action:   document.location.pathname, 
-          label:    'Page Load', 
+          action:   '_pageload', 
           value:    timer
         });
         var script = document.createElement('script');
-            script.async = true;
-            script.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            document.body.appendChild(script);
+        script.async = true;
+        script.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        document.body.appendChild(script);
       }
       
     }
