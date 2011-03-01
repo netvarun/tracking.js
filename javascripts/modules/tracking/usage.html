@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-  
+
   <script src="../../../javascripts/modules/tracking/tracking.js"></script>
   <script>
     tracking.start({
@@ -12,7 +12,7 @@
   <noscript>
   <img width="1" height="1" src="http://www.google-analytics.com/__utm.gif?utmac=UA-111111-1&amp;utmp=/noscript">
 </noscript>
-  
+
   <title>tracking demo</title>
 </head>
 <body>
@@ -23,48 +23,48 @@
   Hello. <a href="#">Link text</a>. <br><br><br><br><br><br>
   Hello. <a href="#">Link text</a>. <br><br><br><br><br><br>
   Hello. <a href="#">Link text</a>.
-  
-  
-  <script src="../../../javascripts/jquery/jquery-1.5.min.js"></script>
-  <script src="../../../javascripts/jquery/plugins/jquery.waypoints.min.js"></script>
-  
-  <script src="../../../javascripts/modules/tracking/tracking-events.js"></script>
-  <script src="../../../javascripts/modules/tracking/tracking-waypoints.js"></script>
-  
-  
+
+
   <script>
       var items = [
         {
-          orderID   : 99, 
-          skuID     : '1', 
-          name      : 'T-Shirt', 
-          variant   : 'Green', 
-          unitPrice : 19.99, 
+          orderID   : 99,
+          skuID     : '1',
+          name      : 'T-Shirt',
+          variant   : 'Green',
+          unitPrice : 19.99,
           quantity  : 2
         },
         {
-          orderID   : 99, 
-          skuID     : '2', 
-          name      : 'Hat', 
-          variant   : 'Black', 
-          unitPrice :  9.99, 
+          orderID   : 99,
+          skuID     : '2',
+          name      : 'Hat',
+          variant   : 'Black',
+          unitPrice :  9.99,
           quantity  : 1
         }
       ];
-      
+
       tracking.transaction({
-        items     : items, 
-        orderID   : 99, 
-        name      : 'Mitchell\'s Store', 
-        total     : 999.99, 
-        tax       : 9.99, 
-        shipping  : 1.99, 
-        city      : 'Sheffield', 
-        state     : 'Yorkshire', 
+        items     : items,
+        orderID   : 99,
+        name      : 'Mitchell\'s Store',
+        total     : 999.99,
+        tax       : 9.99,
+        shipping  : 1.99,
+        city      : 'Sheffield',
+        state     : 'Yorkshire',
         country   : 'United Kingdom'
       });
   </script>
-  
+
+
+  <script src="../../../javascripts/jquery/jquery-1.5.min.js"></script>
+  <script src="../../../javascripts/jquery/plugins/jquery.waypoints.min.js"></script>
+
+  <script src="../../../javascripts/modules/tracking/jquery.events.tracking.js"></script>
+  <script src="../../../javascripts/modules/tracking/jquery.waypoints.tracking.js"></script>
+
   <footer>
     footer
   </footer>
@@ -72,6 +72,6 @@
   <script>
     tracking.end();
   </script>
-  
+
 </body>
 </html>
