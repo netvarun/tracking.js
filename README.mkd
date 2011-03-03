@@ -10,10 +10,11 @@ Example usage
 
 Somewhere up in the head of your document:
 
+    <script src="http://github.com/mitchellbryson/tracking.js/raw/master/tracking.js"></script>
     <script>
       /*  This will track the current pageview as "_error"
           and append some useful info, such as page URL and referer
-          this is reset to false once a pageview has been added to the queue */
+          useful for tracking 404 pages and the like */
       // tracking.error = true; // default is false
       
       /*  starts a queue for asynchronous tracking, 
@@ -60,15 +61,15 @@ Use the tracking.event() method to track new events, like clicks.
 The repository includes an events tracking JS that depends on jQuery to track
 click events on links and forms. Just include it in your page, after the tracking.start() method:
 
-    <script src=/javascripts/jquery/jquery-1.5.min.js"></script>
-    <script src="/javascripts/modules/tracking/jquery.events.tracking.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script src="http://github.com/mitchellbryson/tracking.js/raw/master/jquery.events.tracking.js"></script>
 
 There's also a waypoints file that uses the jquery.waypoints plugin to track scrolling.
 Include it in your page, after the tracking.start() method:
 
-    <script src=/javascripts/jquery/jquery-1.5.min.js"></script>
-    <script src="javascripts/jquery/plugins/jquery.waypoints.min.js"></script>
-    <script src="javascripts/modules/tracking/jquery.waypoints.tracking.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script src="http://github.com/imakewebthings/jquery-waypoints/raw/master/waypoints.min.js"></script>
+    <script src="http://github.com/mitchellbryson/tracking.js/raw/master/jquery.waypoints.tracking.js"></script>
 
 
 Transactions
