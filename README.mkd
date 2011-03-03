@@ -1,0 +1,112 @@
+About
+===
+
+A standalone javascript that implements google analytics.
+It includes methods to track page views, events and transactions.
+
+
+Example usage
+---
+
+Somewhere up in the head of your document:
+
+    <script>
+      /*  This will track the current pageview as "_error"
+          and append some useful info, such as page URL and referer
+          this is reset to false once a pageview has been added to the queue */
+      // tracking.error = true; // default is false
+      
+      /*  starts a queue for asynchronous tracking, 
+          which means you can track any events before the page has finished loading. */
+      tracking.start();
+    </script>
+    
+    <!--
+      This will track users in Google Analytics, that have javascript disabled.
+      Change UA-XXXXXX-X to your own Google Analytics ID. -->
+    <noscript>
+      <img width="1" height="1" src="http://www.google-analytics.com/__utm.gif?utmac=UA-XXXXXX-X&amp;utmp=/noscript">
+    </noscript>
+
+
+Somewhere at the very bottom of your document:
+
+    <script>
+      /*  Pushes the queue to the relevant providers (just google for now),
+          and continues to do so for any new events. */
+      tracking.end();
+    </script>
+
+Page views
+---
+To track a new pageview, for events that don't reload the page (like ajax calls)
+you can use the tracking.pageview() method, along with an optional path.
+
+    tracking.pageview('/path/to/my/ajax/page.html');
+
+
+Events
+---
+Use the tracking.event() method to track new events, like clicks.
+"category" and "action" are required, but label and value are not.
+
+    tracking.event({
+        category  : 'Link', 
+        action    : 'path/to/link.html',
+        label     : 'A link',
+        value     : 2
+      });
+
+The repository includes an events tracking JS that depends on jQuery to track
+click events on links and forms. Just include it in your page, after the tracking.start() method:
+
+    <script src=/javascripts/jquery/jquery-1.5.min.js"></script>
+    <script src="/javascripts/modules/tracking/jquery.events.tracking.js"></script>
+
+There's also a waypoints file that uses the jquery.waypoints plugin to track scrolling.
+Include it in your page, after the tracking.start() method:
+
+    <script src=/javascripts/jquery/jquery-1.5.min.js"></script>
+    <script src="javascripts/jquery/plugins/jquery.waypoints.min.js"></script>
+    <script src="javascripts/modules/tracking/jquery.waypoints.tracking.js"></script>
+
+
+Transactions
+---
+Here's an example of how a transaction is tracked. 
+This can be placed anywhere after the tracking.start() method.
+
+    <script>
+        /*  Each item skuID must be unique to the product 
+            if you want them to be tracked individually. */
+        var items = [
+          {
+            orderID   : 99,
+            skuID     : '1',
+            name      : 'T-Shirt',
+            variant   : 'Green',
+            unitPrice : 19.99,
+            quantity  : 2
+          },
+          {
+            orderID   : 99,
+            skuID     : '2',
+            name      : 'Hat',
+            variant   : 'Black',
+            unitPrice :  9.99,
+            quantity  : 1
+          }
+        ];
+
+        tracking.transaction({
+          items     : items,
+          orderID   : 99,
+          name      : 'Mitchell\'s Store',
+          total     : 999.99,
+          tax       : 9.99,
+          shipping  : 1.99,
+          city      : 'Sheffield',
+          state     : 'Yorkshire',
+          country   : 'United Kingdom'
+        });
+    </script>
